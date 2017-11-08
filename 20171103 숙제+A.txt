@@ -1,0 +1,141 @@
+SQL> CREATE TABLE STUDENT1
+  2  AS SELECT * FROM STUDENT WHERE STU_GRADE IN (1,2);
+
+테이블이 생성되었습니다.
+
+SQL> CREATE TABLE SUBJECT1
+  2  AS SELECT * FROM SUBJECT;
+
+테이블이 생성되었습니다.
+
+SQL> CREATE TABLE ENROL1
+  2  AS SELECT * FROM ENROL;
+
+테이블이 생성되었습니다.
+
+SQL> SELELCT * FROM STUDNET1;
+SP2-0734: "SELELCT * ..."(으)로 시작되는 알 수 없는 명령 - 나머지 줄은 무시되
+습니다.
+SQL> SELELCT * FROM STUDENT1;
+SP2-0734: "SELELCT * ..."(으)로 시작되는 알 수 없는 명령 - 나머지 줄은 무시되
+습니다.
+SQL> SELECT * FROM STUDENT1;
+
+STU_NO    STU_NAME     STU_DEPT              STU_GRADE S S STU_HEIGHT STU_WE
+
+--------- ------------ -------------------- ---------- - - ---------- ------
+
+20153075  옥한빛       기계                          1 C M        170
+
+20153088  이태연       기계                          1 C F        162
+
+20143054  유가인       기계                          2 C F        154
+
+20152088  조민우       전기전자                      1 C M        188
+
+20142021  심수정       전기전자                      2 A F        168
+
+20151062  김인중       컴퓨터정보                    1 B M        166
+
+20141007  진현무       컴퓨터정보                    2 A M        174
+
+
+7 개의 행이 선택되었습니다.
+
+SQL> INSERT INTO VALUES(20101059,'조병준',
+  2  '컴퓨터정보',1,'B',165,70);
+INSERT INTO VALUES(20101059,'조병준',
+            *
+1행에 오류:
+ORA-00903: 테이블명이 부적합합니다
+
+
+SQL> INSERT INTO STUDNET1 VALUES(20101059,'조병준',
+  2  ;
+
+*
+2행에 오류:
+ORA-00936: 누락된 표현식
+
+
+SQL> INSERT INTO VALUES(20101059,'조병준',
+  2  '컴퓨터정보',1,'B',165,70);
+INSERT INTO VALUES(20101059,'조병준',
+            *
+1행에 오류:
+ORA-00903: 테이블명이 부적합합니다
+
+
+SQL> INSERT INTO STUDNET1 VALUES(20101059,'조병준',
+  2  '컴퓨터정보',1,'B',165,70);
+INSERT INTO STUDNET1 VALUES(20101059,'조병준',
+            *
+1행에 오류:
+ORA-00942: 테이블 또는 뷰가 존재하지 않습니다
+
+
+SQL> INSERT INTO STUDENT1 VALUES(20101059,'조병준',
+  2  '컴퓨터정보',1,'B',165,70);
+INSERT INTO STUDENT1 VALUES(20101059,'조병준',
+            *
+1행에 오류:
+ORA-00947: 값의 수가 충분하지 않습니다
+
+
+SQL> INSERT INTO STUDNET1 VALUES('20101059','조병준',
+  2  '컴퓨터정보',1,'B',165,70);
+INSERT INTO STUDNET1 VALUES('20101059','조병준',
+            *
+1행에 오류:
+ORA-00942: 테이블 또는 뷰가 존재하지 않습니다
+
+
+SQL> INSERT INTO STUDENT1 VALUES('20101059','조병준',
+  2  '컴퓨터정보',1,'B',165,70);
+INSERT INTO STUDENT1 VALUES('20101059','조병준',
+            *
+1행에 오류:
+ORA-00947: 값의 수가 충분하지 않습니다
+
+
+SQL> DESC STUDENT1;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ------------------------
+
+ STU_NO                                             CHAR(9)
+ STU_NAME                                           VARCHAR2(12)
+ STU_DEPT                                           VARCHAR2(20)
+ STU_GRADE                                          NUMBER(1)
+ STU_CLASS                                          CHAR(1)
+ STU_GENDER                                         CHAR(1)
+ STU_HEIGHT                                         NUMBER(5,2)
+ STU_WEIGHT                                         NUMBER(5,2)
+
+SQL> INSERT INTO STUDENT1 VALUES('20101059','조병준',
+  2  '컴퓨터정보',1,'B',165,70);
+INSERT INTO STUDENT1 VALUES('20101059','조병준',
+            *
+1행에 오류:
+ORA-00947: 값의 수가 충분하지 않습니다
+
+
+SQL>
+SQL> INSERT INTO STUDENT1 VALUES('20101059','조병준',
+  2  '컴퓨터정보',1,'B'','F',165,70 );
+ERROR:
+ORA-01756: 단일 인용부를 지정해 주십시오
+
+
+SQL> INSERT INTO STUDENT1 VALUES('20101059','조병준',
+  2  '컴퓨터정보',1,'B'','F',165,70);
+ERROR:
+ORA-01756: 단일 인용부를 지정해 주십시오
+
+
+SQL> INSERT INTO STUDENT1 VALUES('20101059','조병준',
+  2  '컴퓨터정보',1,'B','F',165,70);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STUDENT1 VALUES('20102038','남지선',
+  2  '전기전자',1,'C','F',NULL,NULL);
